@@ -9,7 +9,6 @@ export default function HeroGlass() {
           loop
           muted
           playsInline
-          poster="/images/products/banner_1.png"
           className="h-full w-full object-cover object-center"
         >
           <source src="/images/products/banner_video.mp4" type="video/mp4" />
