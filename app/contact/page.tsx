@@ -25,13 +25,14 @@ export default function ContactPage() {
           <div>
             <p className="font-semibold text-foreground/80">Registered Address</p>
             <p className="text-foreground/60">
-              Bavin Ghee Pvt. Ltd., 123 Gaushala Road, Your City, India
+              JAIWIN DAIRY FARM <span className="block"> Bavin Ghee 133/1C2, JJ Nagar, Salaipudur, </span>
+               <span className="block"> Oddanchatram - 624 619. </span>
             </p>
           </div>
           <div>
             <p className="font-semibold text-foreground/80">Email</p>
             <a href="mailto:hello@bavinghee.com" className="text-maroon hover:text-maroon-dark transition-colors">
-              hello@bavinghee.com
+              jaiwindairyfarm@gmail.com
             </a>
           </div>
           <div>

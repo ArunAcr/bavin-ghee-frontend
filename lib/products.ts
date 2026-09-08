@@ -33,11 +33,12 @@ export const products: Product[] = [
     category: "cow-ghee",
     categoryLabel: "Cow Ghee",
     images: [
-      "/images/products/cow-ghee-bottle.png",
-      "/images/products/cow-ghee-box.jpeg",
+      "/images/products/ghee_3.png",
+      "/images/products/ghee_2.png",
+      "/images/products/ghee_1.png",
     ],
     variants: [
-      { id: "cg-200", label: "200 ml", price: 325 },
+      { id: "cg-250", label: "250 ml", price: 325 },
       { id: "cg-500", label: "500 ml", price: 749, compareAtPrice: 849 },
       { id: "cg-1000", label: "1 L", price: 1399, compareAtPrice: 1599 },
     ],
@@ -60,7 +61,7 @@ export const products: Product[] = [
       "Made from buffalo milk, this ghee has a denser texture and a richer, more robust flavour than cow ghee. A favourite for those who grew up with the taste of home-style tempering and festive sweets.",
     category: "buffalo-ghee",
     categoryLabel: "Buffalo Ghee",
-    images: ["/images/products/buffalo-ghee-bottle.png"],
+    images: ["/images/products/ghee_4.png"],
     variants: [
       { id: "bg-200", label: "200 ml", price: 299 },
       { id: "bg-500", label: "500 ml", price: 699, compareAtPrice: 799 },
@@ -84,7 +85,7 @@ export const products: Product[] = [
       "Freshly churned white butter from cow milk, light and creamy with none of the salt or preservatives found in store-bought spreads. Melt it into your morning paratha or dal for an instant upgrade.",
     category: "cow-butter",
     categoryLabel: "Cow Butter",
-    images: ["/images/products/cow-butter.png"],
+    images: ["/images/products/butter_1.png"],
     variants: [
       { id: "cb-200", label: "200 g", price: 189 },
       { id: "cb-500", label: "500 g", price: 429 },
@@ -108,7 +109,7 @@ export const products: Product[] = [
       "Thicker and richer than cow butter, our buffalo butter brings a deeply indulgent taste to everything it touches. A small spoon goes a long way on hot rice, dal or fresh bread.",
     category: "buffalo-butter",
     categoryLabel: "Buffalo Butter",
-    images: ["/images/products/buffalo-butter.png"],
+    images: ["/images/products/butter_2.png"],
     variants: [
       { id: "bb-200", label: "200 g", price: 179 },
       { id: "bb-500", label: "500 g", price: 409 },

@@ -2,15 +2,33 @@
 
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", inquiryType: "retail" });
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) return;
-    toast.success("Thanks for reaching out — we'll get back to you soon!");
-    setForm({ name: "", email: "", message: "" });
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
+      toast.success("Thanks for reaching out — we'll get back to you soon!");
+      setForm({ name: "", email: "", message: "", inquiryType: "retail" });
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -43,6 +61,29 @@ export default function ContactForm() {
       </div>
 
       <div>
+        <span className="text-sm font-semibold text-foreground/80 mb-1 block">I am a...</span>
+        <div className="flex gap-2">
+          {[
+            { value: "retail", label: "Retail Customer" },
+            { value: "wholesale", label: "Wholesale / Bulk Buyer" },
+          ].map((option) => (
+            <button
+              key={option.value}
+              type="button"
+              onClick={() => setForm((f) => ({ ...f, inquiryType: option.value }))}
+              className={`px-4 py-2 rounded-full border text-sm font-semibold transition-colors ${
+                form.inquiryType === option.value
+                  ? "bg-maroon text-cream border-maroon"
+                  : "border-gold/40 text-foreground/70 hover:border-maroon"
+              }`}
+            >
+              {option.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div>
         <label htmlFor="message" className="text-sm font-semibold text-foreground/80 mb-1 block">
           Message
         </label>
@@ -58,9 +99,10 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="rounded-full bg-maroon text-cream font-semibold px-8 py-3 hover:bg-maroon-dark transition-colors self-start"
+        disabled={submitting}
+        className="rounded-full bg-maroon text-cream font-semibold px-8 py-3 hover:bg-maroon-dark transition-colors self-start disabled:opacity-60"
       >
-        Send Message
+        {submitting ? "Sending…" : "Send Message"}
       </button>
     </form>
   );

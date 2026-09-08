@@ -1,0 +1,110 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProductCategory {
+  cow_ghee       @map("cow-ghee")
+  buffalo_ghee   @map("buffalo-ghee")
+  cow_butter     @map("cow-butter")
+  buffalo_butter @map("buffalo-butter")
+}
+
+model Product {
+  id               String           @id @default(cuid())
+  slug             String           @unique
+  name             String
+  shortDescription String
+  description      String
+  category         ProductCategory
+  categoryLabel    String
+  images           String[]
+  benefits         String[]
+  badge            String?
+  rating           Float            @default(0)
+  reviewCount      Int              @default(0)
+  variants         ProductVariant[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+}
+
+model ProductVariant {
+  id             String  @id @default(cuid())
+  label          String
+  price          Int
+  compareAtPrice Int?
+  product        Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId      String
+}
+
+enum InquiryType {
+  retail
+  wholesale
+}
+
+model ContactMessage {
+  id          String      @id @default(cuid())
+  name        String
+  email       String
+  message     String
+  inquiryType InquiryType @default(retail)
+  createdAt   DateTime    @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+enum OrderStatus {
+  pending
+  paid
+  shipped
+  delivered
+  failed
+  cancelled
+}
+
+model Order {
+  id                String      @id @default(cuid())
+  orderNumber       String      @unique
+  status            OrderStatus @default(pending)
+  customerName      String
+  email             String
+  phone             String
+  addressLine1      String
+  addressLine2      String?
+  city              String
+  state             String
+  postalCode        String
+  country           String      @default("India")
+  subtotal          Int
+  shipping          Int
+  total             Int
+  razorpayOrderId   String?     @unique
+  razorpayPaymentId String?
+  razorpaySignature String?
+  items             OrderItem[]
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model OrderItem {
+  id           String @id @default(cuid())
+  order        Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  orderId      String
+  productSlug  String
+  productName  String
+  variantId    String
+  variantLabel String
+  price        Int
+  quantity     Int
+}

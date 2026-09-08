@@ -39,6 +39,13 @@ yarn-error.log*
 # claude code local settings
 .claude/
 
+# AI tool skill installs (local metadata, not app source)
+.agents/
+.windsurf/
+skills-lock.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/lib/generated/prisma

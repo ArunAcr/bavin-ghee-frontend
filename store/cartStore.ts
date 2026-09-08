@@ -1,3 +1,4 @@
+import { useSyncExternalStore } from "react";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
@@ -85,3 +86,11 @@ export const useCartStore = create<CartState>()(
     { name: "bavin-ghee-cart", skipHydration: true }
   )
 );
+
+export function useCartHasHydrated() {
+  return useSyncExternalStore(
+    (callback) => useCartStore.persist.onFinishHydration(callback),
+    () => useCartStore.persist.hasHydrated(),
+    () => false
+  );
+}

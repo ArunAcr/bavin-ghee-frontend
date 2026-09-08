@@ -1,17 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import toast from "react-hot-toast";
-import { useCartStore } from "@/store/cartStore";
+import { useRouter } from "next/navigation";
+import { useCartStore, useCartHasHydrated } from "@/store/cartStore";
 
 export default function CartPage() {
+  const router = useRouter();
   const items = useCartStore((state) => state.items);
   const updateQuantity = useCartStore((state) => state.updateQuantity);
   const removeItem = useCartStore((state) => state.removeItem);
   const totalPrice = useCartStore((state) => state.totalPrice());
+  const hydrated = useCartHasHydrated();
 
   function handleCheckout() {
-    toast("Checkout is coming soon — we'll be in touch!", { icon: "🛒" });
+    router.push("/checkout");
+  }
+
+  if (!hydrated) {
+    return null;
   }
 
   if (items.length === 0) {

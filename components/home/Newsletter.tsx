@@ -2,15 +2,33 @@
 
 import { FormEvent, useState } from "react";
 import toast from "react-hot-toast";
+import { API_BASE_URL } from "@/lib/api";
 
 export default function Newsletter() {
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     if (!email.trim()) return;
-    toast.success("Thanks for subscribing! Check your inbox for 10% off.");
-    setEmail("");
+
+    setSubmitting(true);
+    try {
+      const res = await fetch(`${API_BASE_URL}/newsletter`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!res.ok) throw new Error("Request failed");
+
+      toast.success("Thanks for subscribing! Check your inbox for 10% off.");
+      setEmail("");
+    } catch {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -32,9 +50,10 @@ export default function Newsletter() {
         />
         <button
           type="submit"
-          className="rounded-full bg-maroon text-cream font-semibold px-6 py-3 hover:bg-maroon-dark transition-colors"
+          disabled={submitting}
+          className="rounded-full bg-maroon text-cream font-semibold px-6 py-3 hover:bg-maroon-dark transition-colors disabled:opacity-60"
         >
-          Subscribe
+          {submitting ? "Subscribing…" : "Subscribe"}
         </button>
       </form>
     </section>
