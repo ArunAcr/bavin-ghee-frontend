@@ -8,7 +8,7 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <Link
       href={`/shop/${product.slug}`}
-      className="group flex flex-col rounded-2xl border border-gold/30 bg-white overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="group flex flex-col rounded-2xl border border-gold/60 bg-white overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
     >
       <div className="relative bg-cream-dark aspect-square flex items-center justify-center p-6">
         {product.badge && (

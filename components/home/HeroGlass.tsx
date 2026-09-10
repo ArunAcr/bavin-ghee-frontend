@@ -20,7 +20,7 @@ export default function HeroGlass() {
       <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6">
         <div className="max-w-md rounded-3xl border border-white/25 bg-white/10 backdrop-blur-lg p-8 sm:p-10 shadow-xl">
           <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl leading-tight text-cream">
-            Grandma&apos;s Tradition, Delivered to Your Table.
+            Pure Cow & Buffalo Ghee Traditionally Made in India
           </h1>
           <p className="mt-4 text-cream/85 text-lg">
             No Preservatives. No Additives. Just Purity.

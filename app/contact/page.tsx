@@ -1,9 +1,16 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
+import { BUSINESS_EMAIL, BUSINESS_PHONE_DISPLAY, BUSINESS_PHONE_TEL } from "@/lib/business";
+
+const title = "Contact Us";
+const description = "Get in touch with Bavin Ghee for questions, feedback or wholesale enquiries.";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Bavin Ghee",
-  description: "Get in touch with Bavin Ghee for questions, feedback or wholesale enquiries.",
+  title,
+  description,
+  alternates: { canonical: "/contact" },
+  openGraph: { title, description, url: "/contact" },
+  twitter: { title, description },
 };
 
 export default function ContactPage() {
@@ -31,14 +38,14 @@ export default function ContactPage() {
           </div>
           <div>
             <p className="font-semibold text-foreground/80">Email</p>
-            <a href="mailto:hello@bavinghee.com" className="text-maroon hover:text-maroon-dark transition-colors">
-              jaiwindairyfarm@gmail.com
+            <a href={`mailto:${BUSINESS_EMAIL}`} className="text-maroon hover:text-maroon-dark transition-colors">
+              {BUSINESS_EMAIL}
             </a>
           </div>
           <div>
             <p className="font-semibold text-foreground/80">Phone</p>
-            <a href="tel:+911234567890" className="text-maroon hover:text-maroon-dark transition-colors">
-              +91 12345 67890
+            <a href={`tel:${BUSINESS_PHONE_TEL}`} className="text-maroon hover:text-maroon-dark transition-colors">
+              {BUSINESS_PHONE_DISPLAY}
             </a>
           </div>
         </div>

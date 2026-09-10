@@ -1,8 +1,14 @@
 import { Metadata } from "next";
 
+const title = "Blog";
+const description = "Recipes, tips and everything you want to know about pure ghee and butter.";
+
 export const metadata: Metadata = {
-  title: "Blog | Bavin Ghee",
-  description: "Recipes, tips and everything you want to know about pure ghee and butter.",
+  title,
+  description,
+  alternates: { canonical: "/blog" },
+  openGraph: { title, description, url: "/blog" },
+  twitter: { title, description },
 };
 
 const posts = [

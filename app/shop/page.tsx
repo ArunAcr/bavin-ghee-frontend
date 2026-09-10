@@ -4,9 +4,15 @@ import { categories, products } from "@/lib/products";
 import ProductCard from "@/components/product/ProductCard";
 import { ProductCategory } from "@/types/product";
 
+const title = "Shop";
+const description = "Shop pure cow ghee, buffalo ghee, cow butter and buffalo butter from Bavin Ghee.";
+
 export const metadata: Metadata = {
-  title: "Shop | Bavin Ghee",
-  description: "Shop pure cow ghee, buffalo ghee, cow butter and buffalo butter from Bavin Ghee.",
+  title,
+  description,
+  alternates: { canonical: "/shop" },
+  openGraph: { title, description, url: "/shop" },
+  twitter: { title, description },
 };
 
 export default async function ShopPage({

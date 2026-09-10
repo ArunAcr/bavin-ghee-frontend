@@ -5,8 +5,12 @@ import Bestsellers from "@/components/home/Bestsellers";
 import ProductHighlight from "@/components/home/ProductHighlight";
 import BrandStory from "@/components/home/BrandStory";
 import VideoShowcase from "@/components/home/VideoShowcase";
+import GheeComparison from "@/components/home/GheeComparison";
+import QualityTesting from "@/components/home/QualityTesting";
+import FAQ from "@/components/home/FAQ";
+import BlogTeaser from "@/components/home/BlogTeaser";
 import Testimonials from "@/components/home/Testimonials";
-import Newsletter from "@/components/home/Newsletter";
+// import Newsletter from "@/components/home/Newsletter";
 
 export default function Home() {
   return (
@@ -18,8 +22,12 @@ export default function Home() {
       <ProductHighlight />
       <Bestsellers />
       <BrandStory />
+      <GheeComparison />
+      <QualityTesting />
+      <BlogTeaser />
       <Testimonials />
-      <Newsletter />
+      <FAQ />
+      {/* <Newsletter /> */}
     </div>
   );
 }
