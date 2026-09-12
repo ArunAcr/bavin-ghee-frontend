@@ -11,6 +11,7 @@ export const BUSINESS_PHONE_DISPLAY = "+91 73737 31119";
 export const BUSINESS_PHONE_TEL = "+917373731119";
 
 export const CITIES_SERVED = [
+  "Oddanchatram",
   "Chennai",
   "Coimbatore",
   "Madurai",
