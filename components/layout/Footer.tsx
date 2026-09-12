@@ -17,7 +17,7 @@ export default function Footer() {
               <Logo className="h-12 w-12 sm:h-14 sm:w-14" />
               <span className="hidden sm:flex flex-col leading-tight">
                 <span className="font-display font-extrabold text-lg text-white tracking-wide">
-                  Bavin Ghee
+                  <span className="block">Bavin Ghee</span>
                 </span>
                 <span className="text-[11px] uppercase tracking-widest text-white">
                   The Taste of Heaven
@@ -26,8 +26,7 @@ export default function Footer() {
             </Link>
           </div>
           <p className="text-sm text-cream/80 leading-relaxed">
-            Once upon a time, a family kitchen started making ghee the traditional way —
-            no shortcuts, no additives. Today, we bring that same purity to yours.
+            Rooted in tradition and crafted with care, Bavin brings authentic Cow and Buffalo Ghee to your family kitchen - rich in taste, made with care, and inspired by generations of dairy goodness.
           </p>
         </div>
 
@@ -55,9 +54,10 @@ export default function Footer() {
         <div>
           <h3 className="font-display font-bold text-base mb-4">Get in Touch</h3>
           <address className="not-italic text-sm text-cream/80 leading-relaxed space-y-2">
-            <p>Bavin Ghee</p>
+            {/* <p>Bavin Ghee</p> */}
+             <p><b className="pb-2">JAIWIN DAIRY FARM </b></p>
             <p>
-              {BUSINESS_ADDRESS.line1}, {BUSINESS_ADDRESS.city} - {BUSINESS_ADDRESS.postalCode},{" "}
+              <span>Bavin Ghee</span>, {BUSINESS_ADDRESS.line1}, {BUSINESS_ADDRESS.city} - {BUSINESS_ADDRESS.postalCode},{" "}
               {BUSINESS_ADDRESS.state}
             </p>
             <p>

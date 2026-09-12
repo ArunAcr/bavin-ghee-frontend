@@ -20,7 +20,7 @@ export default function Header() {
   return (
     <div className="sticky top-0 z-50">
       <div className="bg-green text-cream text-center text-xs sm:text-sm py-2 px-4 font-medium">
-        Free shipping on orders above ₹999 — Pure, traditional ghee delivered to your door.
+        Free shipping on orders above ₹1999 — Pure, traditional ghee delivered to your door.
       </div>
 
       <header className="bg-cream border-b border-gold/40">

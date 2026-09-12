@@ -30,20 +30,20 @@ export default function ContactPage() {
 
         <div className="space-y-4 text-sm">
           <div>
-            <p className="font-semibold text-foreground/80">Registered Address</p>
+            <p className="font-semibold text-foreground/80 pb-2">Registered Address</p>
             <p className="text-foreground/60">
-              JAIWIN DAIRY FARM <span className="block"> Bavin Ghee 133/1C2, JJ Nagar, Salaipudur, </span>
-               <span className="block"> Oddanchatram - 624 619. </span>
+              <b className="pt-1">JAIWIN DAIRY FARM </b><span className="block pt-1"> Bavin Ghee 133/1C2, JJ Nagar, Salaipudur, </span>
+               <span className="block pt-1"> Oddanchatram - 624 619. </span>
             </p>
           </div>
           <div>
-            <p className="font-semibold text-foreground/80">Email</p>
+            <p className="font-semibold text-foreground/80 pb-2">Email</p>
             <a href={`mailto:${BUSINESS_EMAIL}`} className="text-maroon hover:text-maroon-dark transition-colors">
               {BUSINESS_EMAIL}
             </a>
           </div>
           <div>
-            <p className="font-semibold text-foreground/80">Phone</p>
+            <p className="font-semibold text-foreground/80 pb-2">Phone</p>
             <a href={`tel:${BUSINESS_PHONE_TEL}`} className="text-maroon hover:text-maroon-dark transition-colors">
               {BUSINESS_PHONE_DISPLAY}
             </a>

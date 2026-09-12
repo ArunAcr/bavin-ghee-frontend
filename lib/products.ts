@@ -38,9 +38,10 @@ export const products: Product[] = [
       "/images/products/ghee_1.png",
     ],
     variants: [
-      { id: "cg-250", label: "200 ml", price: 325 },
-      { id: "cg-500", label: "500 ml", price: 749, compareAtPrice: 849 },
-      { id: "cg-1000", label: "1 L", price: 1399, compareAtPrice: 1599 },
+      { id: "cg-100", label: "100 ml", price: 83 },
+      { id: "cg-200", label: "200 ml", price: 164 },
+      { id: "cg-500", label: "500 ml", price: 405 },
+      { id: "cg-1000", label: "1 L", price: 800 },
     ],
     benefits: [
       "Rich, golden colour and natural aroma",
@@ -63,9 +64,10 @@ export const products: Product[] = [
     categoryLabel: "Buffalo Ghee",
     images: ["/images/products/ghee_4.png"],
     variants: [
-      { id: "bg-200", label: "200 ml", price: 299 },
-      { id: "bg-500", label: "500 ml", price: 699, compareAtPrice: 799 },
-      { id: "bg-1000", label: "1 L", price: 1299 },
+      { id: "bg-100", label: "100 ml", price: 95 },
+      { id: "bg-200", label: "200 ml", price: 186 },
+      { id: "bg-500", label: "500 ml", price: 460 },
+      { id: "bg-1000", label: "1 L", price: 900 },
     ],
     benefits: [
       "Rich and creamy dairy flavour",
@@ -88,9 +90,9 @@ export const products: Product[] = [
     categoryLabel: "Cow Butter",
     images: ["/images/products/butter_1.png"],
     variants: [
-      { id: "cb-200", label: "200 g", price: 189 },
-      { id: "cb-500", label: "500 g", price: 429 },
-      { id: "cb-800", label: "1 kg", price: 829 },
+      { id: "cb-250", label: "250 g", price: 160 },
+      { id: "cb-500", label: "500 g", price: 310 },
+      { id: "cb-1000", label: "1 kg", price: 600 },
     ],
     benefits: [
       "Creamy texture and natural dairy taste",
@@ -113,9 +115,9 @@ export const products: Product[] = [
     categoryLabel: "Buffalo Butter",
     images: ["/images/products/butter_2.png"],
     variants: [
-      { id: "bb-200", label: "200 g", price: 179 },
-      { id: "bb-500", label: "500 g", price: 409 },
-      { id: "bb-800", label: "1 kg", price: 829 },
+      { id: "bb-250", label: "250 g", price: 180 },
+      { id: "bb-500", label: "500 g", price: 340 },
+      { id: "bb-1000", label: "1 kg", price: 650 },
     ],
     benefits: [
       "Rich and creamy texture",
