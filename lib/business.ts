@@ -7,6 +7,7 @@ export const BUSINESS_ADDRESS = {
   country: "IN",
 };
 export const BUSINESS_EMAIL = "jaiwindairyfarm@gmail.com";
+export const BUSINESS_SUPPORT_EMAIL = "support@bavinghee.com";
 export const BUSINESS_PHONE_DISPLAY = "+91 73737 31119";
 export const BUSINESS_PHONE_TEL = "+917373731119";
 

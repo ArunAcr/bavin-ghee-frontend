@@ -3,6 +3,7 @@ import Logo from "@/components/brand/Logo";
 import {
   BUSINESS_ADDRESS,
   BUSINESS_EMAIL,
+  BUSINESS_SUPPORT_EMAIL,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
 } from "@/lib/business";
@@ -66,6 +67,11 @@ export default function Footer() {
               </a>
             </p>
             <p>
+              <a href={`mailto:${BUSINESS_SUPPORT_EMAIL}`} className="hover:text-gold transition-colors">
+                {BUSINESS_SUPPORT_EMAIL}
+              </a>
+            </p>
+            <p>
               <a href={`tel:${BUSINESS_PHONE_TEL}`} className="hover:text-gold transition-colors">
                 {BUSINESS_PHONE_DISPLAY}
               </a>
@@ -76,7 +82,7 @@ export default function Footer() {
 
       <div className="border-t border-cream/15">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream/70">
-          <p>&copy; 2026 Bavin Ghee. All rights reserved.</p>
+          <p>&copy; 2026 Jaiwin Dairy Farm. All rights reserved.</p>
           <p>Made with care, for your family&apos;s table.</p>
         </div>
       </div>

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCartStore, useCartHasHydrated } from "@/store/cartStore";
+import { getProductBySlug } from "@/lib/products";
+import ProductVisual from "@/components/product/ProductVisual";
+import { FREE_SHIPPING_THRESHOLD } from "@/lib/checkout";
 
 export default function CartPage() {
   const router = useRouter();
@@ -41,60 +44,86 @@ export default function CartPage() {
 
       <div className="grid lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 flex flex-col gap-4">
-          {items.map((item) => (
+          {items.map((item) => {
+            const product = getProductBySlug(item.productSlug);
+            return (
             <div
               key={`${item.productSlug}-${item.variantId}`}
-              className="flex items-center gap-4 rounded-2xl border border-gold/30 bg-white p-4"
+              className="flex flex-col gap-4 sm:flex-row sm:items-center rounded-2xl border border-gold/30 bg-white p-4"
             >
-              <div className="h-16 w-16 rounded-xl bg-cream-dark shrink-0" aria-hidden />
+              <div className="flex items-start gap-4 sm:flex-1 sm:items-center sm:min-w-0">
+                <div className="h-16 w-16 rounded-xl bg-cream-dark shrink-0 overflow-hidden">
+                  {product && (
+                    <ProductVisual
+                      category={product.category}
+                      label={product.categoryLabel}
+                      image={product.images?.[0]}
+                      sizes="4rem"
+                    />
+                  )}
+                </div>
 
-              <div className="flex-1 min-w-0">
-                <Link
-                  href={`/shop/${item.productSlug}`}
-                  className="font-display font-bold text-foreground hover:text-maroon transition-colors"
+                <div className="flex-1 min-w-0">
+                  <Link
+                    href={`/shop/${item.productSlug}`}
+                    className="font-display font-bold text-foreground hover:text-maroon transition-colors"
+                  >
+                    {item.productName}
+                  </Link>
+                  <p className="text-sm text-foreground/50">{item.variantLabel}</p>
+                </div>
+
+                <button
+                  onClick={() => removeItem(item.productSlug, item.variantId)}
+                  className="sm:hidden shrink-0 text-foreground/40 hover:text-maroon transition-colors"
+                  aria-label="Remove item"
                 >
-                  {item.productName}
-                </Link>
-                <p className="text-sm text-foreground/50">{item.variantLabel}</p>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
+                </button>
               </div>
 
-              <div className="flex items-center border border-gold/40 rounded-full">
+              <div className="flex items-center justify-between sm:justify-end sm:gap-4">
+                <div className="flex items-center border border-gold/40 rounded-full">
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.productSlug, item.variantId, item.quantity - 1)
+                    }
+                    className="h-9 w-9 flex items-center justify-center text-maroon font-bold"
+                    aria-label="Decrease quantity"
+                  >
+                    −
+                  </button>
+                  <span className="w-7 text-center text-sm font-semibold">{item.quantity}</span>
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.productSlug, item.variantId, item.quantity + 1)
+                    }
+                    className="h-9 w-9 flex items-center justify-center text-maroon font-bold"
+                    aria-label="Increase quantity"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <p className="w-20 text-right font-semibold text-maroon">
+                  ₹{item.price * item.quantity}
+                </p>
+
                 <button
-                  onClick={() =>
-                    updateQuantity(item.productSlug, item.variantId, item.quantity - 1)
-                  }
-                  className="h-9 w-9 flex items-center justify-center text-maroon font-bold"
-                  aria-label="Decrease quantity"
+                  onClick={() => removeItem(item.productSlug, item.variantId)}
+                  className="hidden sm:inline-flex shrink-0 text-foreground/40 hover:text-maroon transition-colors"
+                  aria-label="Remove item"
                 >
-                  −
-                </button>
-                <span className="w-7 text-center text-sm font-semibold">{item.quantity}</span>
-                <button
-                  onClick={() =>
-                    updateQuantity(item.productSlug, item.variantId, item.quantity + 1)
-                  }
-                  className="h-9 w-9 flex items-center justify-center text-maroon font-bold"
-                  aria-label="Increase quantity"
-                >
-                  +
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
+                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                  </svg>
                 </button>
               </div>
-
-              <p className="w-20 text-right font-semibold text-maroon">
-                ₹{item.price * item.quantity}
-              </p>
-
-              <button
-                onClick={() => removeItem(item.productSlug, item.variantId)}
-                className="text-foreground/40 hover:text-maroon transition-colors"
-                aria-label="Remove item"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-                  <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              </button>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="rounded-2xl border border-gold/30 bg-white p-6 h-fit sticky top-28">
@@ -105,7 +134,7 @@ export default function CartPage() {
           </div>
           <div className="flex items-center justify-between text-sm text-foreground/70 mb-4">
             <span>Shipping</span>
-            <span>{totalPrice >= 999 ? "Free" : "Calculated at checkout"}</span>
+            <span>{totalPrice >= FREE_SHIPPING_THRESHOLD ? "Free" : "Calculated at checkout"}</span>
           </div>
           <div className="flex items-center justify-between font-bold text-maroon border-t border-gold/30 pt-4 mb-6">
             <span>Total</span>

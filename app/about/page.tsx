@@ -54,11 +54,12 @@ export default function AboutPage() {
           </h1>
           <p className="text-foreground/70 leading-relaxed max-w-3xl">
             We believe that the quality of ghee depends on the quality and care
-            given at every stage of its journey. Our A2 cow ghee is made through
-            a carefully managed process, with attention given to purity,
-            traditional methods, hygiene, and consistency. We also manufacture
-            fresh butter, allowing us to maintain greater control over the
-            process and the quality of the final products.
+            given at every stage of its journey. On our family farm in{" "}
+            {BUSINESS_ADDRESS.city}, {BUSINESS_ADDRESS.state}, our A2 cow ghee
+            is made through a carefully managed process, with attention given
+            to purity, traditional methods, hygiene, and consistency. We also
+            manufacture fresh butter, allowing us to maintain greater control
+            over the process and the quality of the final products.
           </p>
           <p className="text-foreground/70 leading-relaxed max-w-2xl">
             For us, it is not just about making and selling dairy products. It

@@ -4,6 +4,11 @@ import { useState } from "react";
 
 const faqs = [
   {
+    question: "Where is Bavin Ghee made?",
+    answer:
+      "Bavin Ghee is made at our family farm in Oddanchatram, Tamil Nadu, where we manage every stage of the process ourselves — from milk to butter to the finished ghee.",
+  },
+  {
     question: "What is the Bilona method?",
     answer:
       "Bilona is a traditional method where curd is hand-churned to extract butter, which is then slow-simmered into ghee. It's slower than industrial methods but preserves aroma, texture and nutrients.",

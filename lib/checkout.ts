@@ -1,7 +1,7 @@
 import { getProductBySlug } from "@/lib/products";
 
-export const FREE_SHIPPING_THRESHOLD = 999;
-export const SHIPPING_FEE = 49;
+export const FREE_SHIPPING_THRESHOLD = 1999;
+export const SHIPPING_FEE = 79;
 
 export interface CartItemInput {
   productSlug: string;

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import ContactForm from "@/components/contact/ContactForm";
-import { BUSINESS_EMAIL, BUSINESS_PHONE_DISPLAY, BUSINESS_PHONE_TEL } from "@/lib/business";
+import { BUSINESS_EMAIL, BUSINESS_SUPPORT_EMAIL, BUSINESS_PHONE_DISPLAY, BUSINESS_PHONE_TEL } from "@/lib/business";
 
 const title = "Contact Us";
 const description = "Get in touch with Bavin Ghee for questions, feedback or wholesale enquiries.";
@@ -40,6 +40,12 @@ export default function ContactPage() {
             <p className="font-semibold text-foreground/80 pb-2">Email</p>
             <a href={`mailto:${BUSINESS_EMAIL}`} className="text-maroon hover:text-maroon-dark transition-colors">
               {BUSINESS_EMAIL}
+            </a>
+          </div>
+          <div>
+            <p className="font-semibold text-foreground/80 pb-2">Support</p>
+            <a href={`mailto:${BUSINESS_SUPPORT_EMAIL}`} className="text-maroon hover:text-maroon-dark transition-colors">
+              {BUSINESS_SUPPORT_EMAIL}
             </a>
           </div>
           <div>

@@ -9,6 +9,8 @@ export default function HeroGlass() {
           loop
           muted
           playsInline
+          preload="auto"
+          poster="/images/products/banner_video_poster.jpg"
           className="h-full w-full object-cover object-center"
         >
           <source src="/images/products/banner_video.mp4" type="video/mp4" />
@@ -25,6 +27,9 @@ export default function HeroGlass() {
           <p className="mt-4 text-cream/85 text-lg">
             No Preservatives. No Additives. Just Purity.
           </p>
+          {/* <p className="mt-2 text-cream/70 text-sm">
+            Made fresh on our family farm in Oddanchatram, Tamil Nadu.
+          </p> */}
           <div className="mt-8">
             <Link
               href="/shop"

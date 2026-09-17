@@ -4,6 +4,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ToasterProvider from "@/components/layout/ToasterProvider";
 import CartHydrator from "@/components/layout/CartHydrator";
+import WhatsAppButton from "@/components/layout/WhatsAppButton";
 import { SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "@/lib/seo";
 import {
   BUSINESS_ADDRESS,
@@ -26,9 +27,9 @@ const playfair = Playfair_Display({
   style: ["normal", "italic"],
 });
 
-const title = "Pure Cow & Buffalo Ghee Online | Bavin Ghee";
+const title = "Pure Cow & Buffalo Ghee in Oddanchatram | Bavin Ghee";
 const description =
-  "Shop Bavin Ghee's pure cow and buffalo ghee, made in small batches using the traditional Bilona method. 100% natural, no additives — delivered across Tamil Nadu and South India.";
+  "Shop Bavin Ghee's pure cow and buffalo ghee, made in small batches on our family farm in Oddanchatram, Tamil Nadu, using the traditional Bilona method. 100% natural, no additives — delivered across Tamil Nadu and South India.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -105,6 +106,7 @@ export default function RootLayout({
         <Footer />
         <ToasterProvider />
         <CartHydrator />
+        <WhatsAppButton />
       </body>
     </html>
   );
